@@ -2,15 +2,13 @@ package com;
 
 public class Solution_7 {
 
-    //Gm...  There is an indirect recursion :)
-
     class A {
         private int aValue;
-        private B bValue = null;
+        private B bValue;
 
         public A() {
             aValue = 0;
-            bValue = new B();
+            bValue = new B(666);
         }
 
         @Override
@@ -21,11 +19,15 @@ public class Solution_7 {
 
     class B {
         private int bValue;
-        private A aInstance = null;
+        private A aInstance;
 
         public B() {
-            bValue = 10;
-            // aInstance = new A();
+            this.bValue = 10;
+            aInstance = new A();
+        }
+
+        public B(int bValue) {
+            this.bValue = bValue;
         }
 
         @Override
